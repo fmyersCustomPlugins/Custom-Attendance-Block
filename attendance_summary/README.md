@@ -94,10 +94,6 @@ this is a one-time setup per parent/student pair.
    - Save. No extra capabilities need to be granted for this block —
      simply being assigned the role in a student's user context is enough.
 
-   *(If you already have a Parent/Guardian role for other purposes — e.g.
-   the one used for `block_reportcard` — you can reuse it here too, as
-   long as it's assignable at User context.)*
-
 ### Linking a parent to a student (repeat per parent/student pair)
 
 1. Go to the **student's** profile page.
@@ -105,11 +101,6 @@ this is a one-time setup per parent/student pair.
    pattern: `/admin/roles/assign.php?contextid=<student's user context id>`).
 3. Select the **Parent** role, then add the parent's account in the
    "potential users" list on the right and assign it.
-
-That's it — the parent doesn't need to be enrolled in the student's
-courses. As soon as this role assignment exists, the parent's Attendance
-Summary block on their own Dashboard will automatically show that
-student's Semester 1 / Semester 2 / Total attendance.
 
 A parent linked to multiple children sees one section per child, labelled
 with the child's name, sorted alphabetically by last name.
@@ -157,14 +148,6 @@ Sessions are bucketed into Semester 1 / Semester 2 / Total using the
   more students see **only** those students' sections. Anyone who is
   neither a student nor linked to any students sees a "You have no
   students or are not enrolled in a course." message instead.
-
-## Possible future enhancements (not included)
-
-- Caching the computed summary (e.g. via Moodle's Cache API) if you have a
-  very large number of students/sessions and want to reduce DB load on
-  every Dashboard view.
-- A "view by course" breakdown, not just an overall total.
-- Support for more than two semester periods (e.g. trimesters).
 
 ## File structure
 
