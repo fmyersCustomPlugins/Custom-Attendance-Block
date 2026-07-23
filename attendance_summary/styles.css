@@ -1,0 +1,46 @@
+.block-attendance-summary .attendance-summary-section {
+    margin-bottom: 1rem;
+}
+
+.block-attendance-summary .attendance-summary-section:last-child {
+    margin-bottom: 0;
+}
+
+.block-attendance-summary .attendance-summary-childname {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.block-attendance-summary .attendance-summary-table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.block-attendance-summary .attendance-summary-table th {
+    text-align: left;
+    font-weight: normal;
+    padding: 0.25rem 0.5rem 0.25rem 0;
+    border: none;
+}
+
+.block-attendance-summary .attendance-summary-table thead th {
+    font-weight: bold;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+}
+
+.block-attendance-summary .attendance-summary-table td {
+    text-align: center;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    border: none;
+}
+
+.block-attendance-summary .attendance-summary-total th,
+.block-attendance-summary .attendance-summary-total td {
+    border-top: 2px solid #ccc;
+    padding-top: 0.5rem;
+    font-weight: bold;
+}

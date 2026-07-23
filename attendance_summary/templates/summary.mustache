@@ -1,0 +1,79 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    @template block_attendance_summary/summary
+
+    Context variables required for this template:
+    * hasresult - bool, false when the viewer is neither a student nor a
+      parent/mentor with linked students - shows a default message instead
+    * datesconfigured - bool, whether the admin has set semester dates yet
+      (only relevant when hasresult is true)
+    * hasmentees - bool, true if the viewer is a parent/mentor seeing one or
+      more linked students rather than their own data
+    * sections - array, one entry per person being shown. Each entry has:
+        - label (string, only present when hasmentees is true - the student's name)
+        - sem1_p, sem1_l, sem1_ua, sem1_ea, sem1_total (int)
+        - sem2_p, sem2_l, sem2_ua, sem2_ea, sem2_total (int)
+        - total_p, total_l, total_ua, total_ea, total_total (int)
+}}
+<div class="block-attendance-summary">
+  {{^hasresult}}
+    <div class="alert alert-info py-1 px-2 small" role="alert">
+      {{#str}}nostudentsorcourses, block_attendance_summary{{/str}}
+    </div>
+  {{/hasresult}}
+
+  {{#hasresult}}
+    {{^datesconfigured}}
+      <div class="alert alert-warning py-1 px-2 small" role="alert">
+        {{#str}}semesterdatesnotset, block_attendance_summary{{/str}}
+      </div>
+    {{/datesconfigured}}
+
+    {{#sections}}
+      <div class="attendance-summary-section">
+        {{#label}}
+          <div class="attendance-summary-childname">{{label}}</div>
+        {{/label}}
+        <table class="generaltable attendance-summary-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>{{#str}}colpresent, block_attendance_summary{{/str}}</th>
+              <th>{{#str}}collate, block_attendance_summary{{/str}}</th>
+              <th>{{#str}}colunexcusedabsent, block_attendance_summary{{/str}}</th>
+              <th>{{#str}}colexcusedabsent, block_attendance_summary{{/str}}</th>
+              <th>{{#str}}coltotal, block_attendance_summary{{/str}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>{{#str}}semester1, block_attendance_summary{{/str}}</th>
+              <td>{{sem1_p}}</td>
+              <td>{{sem1_l}}</td>
+              <td>{{sem1_ua}}</td>
+              <td>{{sem1_ea}}</td>
+              <td>{{sem1_total}}</td>
+            </tr>
+            <tr>
+              <th>{{#str}}semester2, block_attendance_summary{{/str}}</th>
+              <td>{{sem2_p}}</td>
+              <td>{{sem2_l}}</td>
+              <td>{{sem2_ua}}</td>
+              <td>{{sem2_ea}}</td>
+              <td>{{sem2_total}}</td>
+            </tr>
+            <tr class="attendance-summary-total">
+              <th>{{#str}}totalattendance, block_attendance_summary{{/str}}</th>
+              <td>{{total_p}}</td>
+              <td>{{total_l}}</td>
+              <td>{{total_ua}}</td>
+              <td>{{total_ea}}</td>
+              <td>{{total_total}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    {{/sections}}
+  {{/hasresult}}
+</div>
